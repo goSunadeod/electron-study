@@ -15,8 +15,7 @@ function createWindow() {
   })
 
   // 加载应用的 index.html
-  // mainWindow.loadFile('index.html')
-  mainWindow.loadURL(`file://${__dirname}/index.html`);
+  mainWindow.loadFile(path.join(__dirname, 'index.html'))
 
 
   // 启用开发者工具

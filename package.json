@@ -1,22 +1,51 @@
 {
-  "name": "electron-quick-start",
+  "name": "first-electron",
   "version": "1.0.0",
+  "private": true,
   "description": "A minimal Electron application",
   "main": "main.js",
   "scripts": {
     "start": "electron ."
+  },
+  "build": {
+    "productName": "election-demo",
+    "appId": "org.election",
+    "directories": {
+      "output": "build"
+    },
+    "publish": [
+      {
+        "provider": "generic",
+        "url": "www.election.org"
+      }
+    ],
+    "files": [
+      "./dist/**/*",
+      "./package.json"
+    ],
+    "mac": {
+      "icon": "build/icons/icon.icns",
+      "artifactName": "${productName}_${version}.${ext}"
+    },
+    "win": {
+      "icon": "build/icons/icon.ico",
+      "artifactName": "${productName}_${version}.${ext}"
+    }
   },
   "repository": "https://github.com/electron/electron-quick-start",
   "keywords": [
     "Electron",
     "quick",
     "start",
-    "tutorial",
+    "first",
     "demo"
   ],
   "author": "GitHub",
   "license": "CC0-1.0",
   "devDependencies": {
-    "electron": "^10.1.5"
+    "electron": "^10.1.5",
+    "electron-builder": "^22.9.1",
+    "electron-webpack": "^2.8.2",
+    "webpack": "^5.5.0"
   }
 }

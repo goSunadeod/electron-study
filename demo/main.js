@@ -1,18 +1,25 @@
 const { app, BrowserWindow, ipcMain } = require('electron')
 const path = require('path')
 
+const isDev = process.env.ENV === 'development';
+
 function createWindow() {
   const win = new BrowserWindow({
     width: 800,
     height: 600,
     webPreferences: {
-      preload: path.join(__dirname, 'preload.js'),
       nodeIntegration: true,
       enableRemoteModule: true
     }
   })
 
-  win.loadURL('http://localhost:3000')
+  if (isDev) {
+    win.loadURL(`http://localhost:3000`);
+  } else {
+    win.loadFile(path.resolve(__dirname, './dist/index.html'));
+  }
+  win.webContents.openDevTools()
+
 }
 
 app.whenReady().then(() => {
